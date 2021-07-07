@@ -1,0 +1,62 @@
+.cont-text{
+    border: 1px lightgray solid;
+    border-radius: 15px;
+    padding: 15px 0;
+    background-color: rgba(160, 173, 158, 0.1);
+}
+.cont-text li{
+    list-style: none;
+    padding: 5px 10px;
+}
+.cont-text li i{
+    
+    font-size: 25px;
+    color: brown;
+    cursor: pointer;
+}
+.cont-text .like
+{
+    display: flex;
+    justify-content: space-between;
+}
+.cont-text li:nth-child(2) a{
+    margin-right: 5px;
+    color: rgb(159, 246, 45);
+}
+.cont-text li:nth-child(2) span{
+    font-weight: bold;
+    color: rgb(32, 240, 205);
+}
+.cont-text li:nth-child(4){
+    text-align: end;
+    margin-right: 30px;
+}
+
+.cont-text .buttonApply{
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* pop up */
+.newsletter-modal {
+    display: block;
+    border-radius: 15px;
+    padding: 32px;
+    background-color: rgb(33, 34, 34);
+    color: rgb(151, 152, 156);
+    z-index: 1001;
+    margin-left: 15px;
+    width: 350px;
+    height: 2;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+}
+
+li h5 
+{
+    color: brown;
+    font-family: Arial, Helvetica, sans-serif;
+}

@@ -13,6 +13,126 @@
 
 </head>
 <body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info jobs</title>
+    <!-- link font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    <!-- link boostrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!-- link css -->
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- libreria vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+</head>
+<body>
+    
+    <!-- collegamento con vue.js -->
+    <div id="app">
+        <div style="padding: 50px;">
+                <h1>Annunci Offerti</h1>
+                <div class="row">
+                    <div  v-for = '(job, index) in jobs' class="col-3" >
+                        <ul class="cont-text">
+                            <li class="like">
+                                <h2>{{job.company}}</h2>
+                                <div v-if="starred.includes(job.id)" @click="notLike(starred, job.id)">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <div v-else @click="like(starred, job.id)">
+                                    <i class="far fa-heart"></i>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="#">{{job.position}}</a>
+                                <span>({{job.contract}})</span>
+                            </li>
+                            <li>
+                                <span>{{job.description}}</span>
+                            </li>
+                            <li>
+                                <span class="mx-2">{{job.city}},</span>
+                                <span>{{job.created_at}}</span>
+                            </li>
+                            <li class="buttonApply">
+                                <div  v-if="applied.includes(job.id)">
+                                    <button type="button" 
+                                    class="btn btn-outline-danger" 
+                                    @click="applyedNone(applied, job.id)">Candidato</button>                            
+                                </div>
+                                <div  v-else>
+                                    <button type="button" 
+                                    class="btn btn-outline-success" 
+                                    @click="applyed(applied, job.id)">Candidati</button>                       
+                                </div>
+                            </li>
+                        </ul> 
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <h1>Annunci Preferiti</h1>
+                    <div v-for = 'job in jobs' class="col-3">
+                        <div v-if="starred.includes(job.id)">
+                            <ul class="cont-text">
+                                <li>
+                                    <h2>{{job.company}}</h2>  
+                                    <h5 >Annuncio preferito</h5> 
+                                </li>
+                                <li>
+                                    <a href="#">{{job.position}}</a>
+                                    <span>({{job.contract}})</span>
+                                </li>
+                                <li>
+                                    <span>{{job.description}}</span>
+                                </li>
+                                <li>
+                                    <span class="mx-2">{{job.city}},</span>
+                                    <span>{{job.created_at}}</span>
+                                </li>
+                            </ul> 
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <h1>Annunci a cui ti sei Candidato</h1>
+                    <div v-for = 'job in jobs' class="col-3">
+                        <div v-if="applied.includes(job.id)">
+                            <ul class="cont-text">
+                                <li>
+                                    <h2>{{job.company}}</h2> 
+                                    <h5 >Candidattura Inviata</h5> 
+   
+                                </li>
+                                <li>
+                                    <a href="#">{{job.position}}</a>
+                                    <span>({{job.contract}})</span>
+                                </li>
+                                <li>
+                                    <span>{{job.description}}</span>
+                                </li>
+                                <li>
+                                    <span class="mx-2">{{job.city}},</span>
+                                    <span>{{job.created_at}}</span>
+                                </li>
+                            </ul> 
+                        </div>
+                    </div>
+                </div>
+            
+            <div v-if="messagePopUp" class="newsletter-modal col-4">
+                <h1>Candidatura Inviata</h1>
+            </div> 
+        </div>
+    </div>
+    
+    <!-- link javascript -->
     <script src="./script/script.js"></script>
 </body>
 </html>
